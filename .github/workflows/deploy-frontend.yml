@@ -18,6 +18,6 @@ jobs:
       - name: Build project
         run: npm run build
       - name: Erase all file in the frontend directory
-        run: rm -rf /var/tmp/frontend
+        run: rm -rf /var/tmp/frontend/*
       - name: Move the generated file to the frontend directory
         run: mv ./build/* /var/tmp/frontend/
