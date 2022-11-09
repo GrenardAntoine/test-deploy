@@ -17,11 +17,7 @@ jobs:
         run: npm install
       - name: Build project
         run: npm run build
-      - name: Copy the files to the server
-        run: ls -alR
-  deploy:
-    needs: build
-    runs-on: [self-hosted, testolo-server]
-    steps:
-      - name: Copy the files to the server
-        run: ls -alR
+      - name: Erase all file in the frontend directory
+        run: rm -rf /var/tmp/frontend
+      - name: Move the generated file to the frontend directory
+        run: mv -R ./build/* /var/tmp/frontend/

@@ -17,20 +17,7 @@ jobs:
         run: chmod 755 ./mvnw
       - name: Build Maven
         run: ./mvnw package -Dmaven.test.skip=true
-      - name: Save Generated Files
-        uses: actions/upload-artifact@v3
-        with:
-          name: market-intelligence.jar
-          path: ./target/market-intelligence-api-0.0.1-SNAPSHOT.jar
-      - name: Copy the files to the server
-        run: ls -alR
-  deploy:
-    needs: build
-    runs-on: [self-hosted, testolo-server]
-    steps:
-      - name: Copy the files to the server
-        run: ls -alR
-      - name: Copy the files to the server
-        run: cp market-intelligence.jar /var/tmp
+      - name: Move .jar to deployment directory
+        run: mv ./target/market-intelligence-api-0.0.1-SNAPSHOT.jar /var/tmp/app.jar
       - name: Restart Java Server
         run: sudo systemctl restart nginx
