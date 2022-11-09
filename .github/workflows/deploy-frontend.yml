@@ -20,4 +20,4 @@ jobs:
       - name: Erase all file in the frontend directory
         run: rm -rf /var/tmp/frontend
       - name: Move the generated file to the frontend directory
-        run: mv -R ./build/* /var/tmp/frontend/
+        run: mv ./build/* /var/tmp/frontend/
