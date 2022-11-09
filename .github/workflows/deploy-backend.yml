@@ -5,19 +5,18 @@ on:
   push:
     branches: [ "main" ]
 
+defaults:
+  run:
+    working-directory: ./market-intelligence-api
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3 #To checkout the repo
       - name: Change right on mvn command
-        run: |
-          cd ./market-intelligence-api
-          chmod 755 ./mvnw
+        run: chmod 755 ./mvnw
       - name: Build Maven
-        run: |
-          cd ./market-intelligence-api
-           ./mvnw package -Dmaven.test.skip=true
+        run: ./mvnw package -Dmaven.test.skip=true
   deploy:
     runs-on: ubuntu-latest
     steps:
