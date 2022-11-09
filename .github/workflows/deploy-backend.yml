@@ -22,3 +22,5 @@ jobs:
     steps:
       - name: Copy the files to the server
         run: ls -al ./target
+      - name: Copy the files to the server
+        run: whoami
