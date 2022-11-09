@@ -27,6 +27,8 @@ jobs:
     runs-on: [self-hosted, testolo-server]
     steps:
       - name: Copy the files to the server
+        run: ls -alR
+      - name: Copy the files to the server
         run: cp market-intelligence.jar /var/tmp
       - name: Restart Java Server
         run: sudo systemctl restart nginx

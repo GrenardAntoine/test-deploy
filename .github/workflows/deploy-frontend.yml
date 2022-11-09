@@ -16,7 +16,7 @@ jobs:
       - name: Install project
         run: npm install
       - name: Build project
-        run: npm start build
+        run: npm run build
   deploy:
     needs: build
     runs-on: [self-hosted, testolo-server]
