@@ -1,0 +1,24 @@
+name: Deploy Backend
+
+# Controls when the workflow will run
+on:
+  push:
+    branches: [ "main" ]
+
+defaults:
+  run:
+    working-directory: ./market-intelligence-frontend
+jobs:
+  build:
+    runs-on: [self-hosted, testolo-server]
+    steps:
+      - uses: actions/checkout@v3 #To checkout the repo
+      - name: Install project
+        run: npm start build
+      - name: Build project
+        run: npm start build
+  deploy:
+    runs-on: [self-hosted, testolo-server]
+    steps:
+      - name: Copy the files to the server
+        run: ls -al
