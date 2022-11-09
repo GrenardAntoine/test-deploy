@@ -10,7 +10,7 @@ defaults:
     working-directory: ./market-intelligence-api
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, testolo-server]
     steps:
       - uses: actions/checkout@v3 #To checkout the repo
       - name: Change right on mvn command
@@ -18,7 +18,7 @@ jobs:
       - name: Build Maven
         run: ./mvnw package -Dmaven.test.skip=true
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, testolo-server]
     steps:
       - name: Copy the files to the server
         run: ls -al
