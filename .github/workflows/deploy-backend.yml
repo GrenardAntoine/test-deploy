@@ -10,12 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3 #To checkout the repo
-      - name: Change To Market Intelligence Directory
-        run: cd ./market-intelligence-api
       - name: Change right on mvn command
-        run: chmod 755 ./mvnw
+        run: |
+          cd ./market-intelligence-api
+          chmod 755 ./mvnw
       - name: Build Maven
-        run: ./mvnw package -Dmaven.test.skip=true
+        run: |
+          cd ./market-intelligence-api
+           ./mvnw package -Dmaven.test.skip=true
   deploy:
     runs-on: ubuntu-latest
     steps:
