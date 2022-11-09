@@ -11,11 +11,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3 #To checkout the repo
       - name: Change right on mvn command
-        run: chmod 755 ./mvnw
+        run: chmod 755 ./market-intelligence-api/mvnw
       - name: Build Maven
-        run: ./mvnw package -Dmaven.test.skip=true
+        run: ./market-intelligence-api/mvnw package -Dmaven.test.skip=true
   deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Copy the files to the server
-        run: ./target/memosin-0.0.1-SNAPSHOT.jar
+        run: ./market-intelligence-api/target/memosin-0.0.1-SNAPSHOT.jar
