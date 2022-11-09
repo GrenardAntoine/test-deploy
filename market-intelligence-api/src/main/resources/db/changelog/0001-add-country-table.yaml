@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-country-table
+      author: Antoine Grenard
+      changes:
+        - createTable:
+            tableName: country
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  autoIncrement: ${autoIncrement}
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: country_pkey
+                    nullable: false
+              - column:
+                  name: code
+                  type: varchar(255)
+              - column:
+                  name: name
+                  type: varchar(255)
